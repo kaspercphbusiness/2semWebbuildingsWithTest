@@ -73,13 +73,11 @@ public class DBFacadeTest {
     @Test
     public void testGetBuildings_int() {
         System.out.println( "getBuildings" );
-        int buildingID = 0;
-        DBFacade instance = null;
-        Building expResult = null;
-        Building result = instance.getBuildings( buildingID );
-        assertEquals( expResult, result );
-        // TODO review the generated test code and remove the default call to fail.
-        fail( "The test case is a prototype." );
+        // '110','Louis Pios Gade 12','Antonina Lund','4100',' Ringsted','4613-8808'
+        int buildingID = 110;
+        String expResult = "Louis Pios Gade 12";
+        Building result = facade.getBuildings( buildingID );
+        assertEquals( expResult, result.getAddress() );
     }
 
     /**
@@ -88,11 +86,13 @@ public class DBFacadeTest {
     @Test
     public void testUpdateBuilding() {
         System.out.println( "updateBuilding" );
-        Building b = null;
-        DBFacade instance = null;
-        instance.updateBuilding( b );
-        // TODO review the generated test code and remove the default call to fail.
-        fail( "The test case is a prototype." );
+        // 160, Heisesgade 94, Lars Paulsen, 2640,  Hedehusene, 3184-3141
+        // Change phone number
+        Building b = new Building(160, "Heisesgade 94", 2640, "Hedehusene",
+                "Lars Paulsen", "3100-3100");
+        facade.updateBuilding( b );
+        Building b2 = facade.getBuildings( 160);
+        assertEquals( "3100-3100", b2.getContactPhone());
     }
     
 }
