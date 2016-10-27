@@ -16,13 +16,19 @@ import java.util.List;
  * @author kasper
  */
 public class DBFacade {
+    
+    private Connection con;
 
-    public static List<Building> getBuildings() {
+    public DBFacade( Connection con ) {
+        this.con = con;
+    }
+    
+
+    public List<Building> getBuildings() {
         String sql = "SELECT id,street,contactName,zip,city,contactPhone "
                 + "FROM building";
         List<Building> buildings = new ArrayList<>();
-        try ( Connection con = DBConnection.getConnection();
-                Statement stmt = con.createStatement() ) {
+        try ( Statement stmt = con.createStatement() ) {
             ResultSet res = stmt.executeQuery( sql );
             while ( res.next() ) {
                 int id = res.getInt( "id" );
@@ -33,18 +39,17 @@ public class DBFacade {
                 String phone = res.getString( "contactPhone" );
                 buildings.add( new Building( id, street, zip, city, name, phone ) );
             }
-        } catch ( SQLException | ClassNotFoundException ex ) {
+        } catch ( SQLException ex ) {
             System.out.println( "Element not gotten: " + ex.getMessage() );
         }
         return buildings;
     }
 
-    public static Building getBuildings( int buildingID ) {
+    public Building getBuildings( int buildingID ) {
         String sql = "SELECT id,street,contactName,zip,city,contactPhone "
                 + "FROM building "
                 + "WHERE id=?";
-        try ( Connection con = DBConnection.getConnection();
-                PreparedStatement stmt = con.prepareStatement( sql ) ) {
+        try ( PreparedStatement stmt = con.prepareStatement( sql ) ) {
             stmt.setInt( 1, buildingID);
             ResultSet res = stmt.executeQuery();
             if ( res.next() ) {
@@ -55,13 +60,13 @@ public class DBFacade {
                 String phone = res.getString( "contactPhone" );
                 return new Building( buildingID, street, zip, city, name, phone );
             }
-        } catch ( SQLException | ClassNotFoundException ex ) {
+        } catch ( SQLException ex ) {
             System.out.println( "Element not gotten: " + ex.getMessage() );
         }
         return null;
     }
 
-    public static void updateBuilding( Building b ) {
+    public void updateBuilding( Building b ) {
 /* UPDATE table_name
 SET column1=value1,column2=value2,...
 WHERE some_column=some_value;
@@ -73,8 +78,7 @@ WHERE some_column=some_value;
                 + "city=?,"
                 + "contactPhone=? "
                 + "WHERE id=?";
-        try ( Connection con = DBConnection.getConnection();
-                PreparedStatement stmt = con.prepareStatement( sql ) ) {
+        try ( PreparedStatement stmt = con.prepareStatement( sql ) ) {
             stmt.setString( 1, b.getAddress() );
             stmt.setString( 2, b.getContactPerson() );
             stmt.setInt( 3, b.getZip() );
@@ -87,7 +91,7 @@ WHERE some_column=some_value;
             } else {
                 System.out.println( "No change" );
             }
-        } catch ( SQLException | ClassNotFoundException ex ) {
+        } catch ( SQLException ex ) {
             System.out.println( "Element not inserted: " + ex.getMessage() );
         }
     }

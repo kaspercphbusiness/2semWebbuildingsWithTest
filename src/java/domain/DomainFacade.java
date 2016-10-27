@@ -1,8 +1,9 @@
 package domain;
 
+import dbaccess.DBConnection;
 import dbaccess.DBFacade;
+import java.sql.Connection;
 import java.util.List;
-import randomdata.Generator;
 
 /**
  * The purpose of DomainFacade is to provide a way for the presentation layer to
@@ -13,16 +14,21 @@ import randomdata.Generator;
 public class DomainFacade {
 
     public static List<Building> getBuildings() {
-        //return Generator.randomBuildings(100);
-        return DBFacade.getBuildings();
+        Connection con = DBConnection.getConnection();
+        DBFacade dbf = new DBFacade(con );
+        return dbf.getBuildings();
     }
 
     public static Building getBuilding( int id ) {
-        return DBFacade.getBuildings( id );
+        Connection con = DBConnection.getConnection();
+        DBFacade dbf = new DBFacade(con );
+        return dbf.getBuildings( id );
     }
 
     public static void updateBuilding( Building b ) {
-        DBFacade.updateBuilding( b );
+        Connection con = DBConnection.getConnection();
+        DBFacade dbf = new DBFacade(con );
+        dbf.updateBuilding( b );
     }
 }
  
