@@ -36,16 +36,15 @@ public class UpdateBuilding extends HttpServlet {
     protected void processRequest( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
         response.setContentType( "text/html;charset=UTF-8" );
-        try ( PrintWriter out = response.getWriter() ) {
-            switch ( request.getParameter( "action" ) ) {
-                case "Submit":
+        //try ( PrintWriter out = response.getWriter() ) {
+            String action = request.getParameter( "action" );
+            if ( "Submit".equals( action ) ) {
                     store( request, response );
-                    break;
-                case "Cancel":
-                    break;
-            }
+            } else {
+                    System.out.println( "Cancel" );
+            } 
             forward( request, response, "buildings.jsp" );
-        }
+        //}
     }
 
     // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
@@ -88,8 +87,8 @@ public class UpdateBuilding extends HttpServlet {
     }// </editor-fold>
 
     private void forward( HttpServletRequest req, HttpServletResponse res, String path ) throws IOException, ServletException {
-        ServletContext sc = getServletContext();
-        RequestDispatcher rd = sc.getRequestDispatcher( "/" + path );
+        //ServletContext sc = getServletContext();
+        RequestDispatcher rd = req.getRequestDispatcher( "/" + path );
         rd.forward( req, res );
     }
 
@@ -101,6 +100,6 @@ public class UpdateBuilding extends HttpServlet {
         String contact = request.getParameter( "contact" );
         String phone = request.getParameter( "phone" );
         Building b = new Building( id, street, zip, city, contact, phone );
-        DomainFacade.updateBuilding( b );
+        DomainFacade.getFacade().updateBuilding( b );
     }
 }

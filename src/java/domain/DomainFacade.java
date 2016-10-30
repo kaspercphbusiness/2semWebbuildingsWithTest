@@ -13,22 +13,34 @@ import java.util.List;
  */
 public class DomainFacade {
 
-    public static List<Building> getBuildings() {
+    private static DomainFacade facade;
+
+    public static DomainFacade getFacade() {
+        if ( facade == null ) {
+            facade = new DomainFacade();
+        }
+        return facade;
+    }
+
+    public static void setFacade( DomainFacade aFacade ) {
+        facade = aFacade;
+    }
+
+    public List<Building> getBuildings() {
         Connection con = DBConnection.getConnection();
-        DBFacade dbf = new DBFacade(con );
+        DBFacade dbf = new DBFacade( con );
         return dbf.getBuildings();
     }
 
-    public static Building getBuilding( int id ) {
+    public Building getBuilding( int id ) {
         Connection con = DBConnection.getConnection();
-        DBFacade dbf = new DBFacade(con );
+        DBFacade dbf = new DBFacade( con );
         return dbf.getBuildings( id );
     }
 
-    public static void updateBuilding( Building b ) {
+    public void updateBuilding( Building b ) {
         Connection con = DBConnection.getConnection();
-        DBFacade dbf = new DBFacade(con );
+        DBFacade dbf = new DBFacade( con );
         dbf.updateBuilding( b );
     }
 }
- 
