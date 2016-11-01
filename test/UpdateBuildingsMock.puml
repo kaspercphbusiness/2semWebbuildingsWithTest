@@ -14,7 +14,7 @@ group get parameters and make building object
 UpdateBuilding -> Request: getParameter("id")
 note over Request, UpdateBuilding
     pick out other paramters and make building object
-end note
+end note 
 end
 UpdateBuilding -> DomainFacade: updateBuilding( b )
 
