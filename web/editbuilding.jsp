@@ -17,7 +17,7 @@
         <h1>Edit building </h1>
         <%
             int buildingID = Integer.parseInt( request.getParameter( "buildingid" ) );
-            Building b = DomainFacade.getBuilding( buildingID );
+            Building b = DomainFacade.getFacade().getBuilding( buildingID );
         %>
         <form action="updateBuilding" method="POST">
             <table>

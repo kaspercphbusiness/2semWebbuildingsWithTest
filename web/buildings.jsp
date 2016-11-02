@@ -18,7 +18,7 @@
     <body>
         <h1>Building list!</h1>
         <%
-            List<Building> buildings = DomainFacade.getBuildings();
+            List<Building> buildings = DomainFacade.getFacade().getBuildings();
             if (buildings.isEmpty()) {
         %>
             <p>There are no buildings in the database</p>

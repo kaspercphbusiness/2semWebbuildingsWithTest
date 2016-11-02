@@ -95,4 +95,9 @@ WHERE some_column=some_value;
             System.out.println( "Element not inserted: " + ex.getMessage() );
         }
     }
+
+    void insertNewBuilding( Building b ) {
+        throw new UnsupportedOperationException( "Not supported yet." ); //To change body of generated methods, choose Tools | Templates.
+    }
+
 }

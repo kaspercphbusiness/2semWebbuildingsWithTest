@@ -94,5 +94,18 @@ public class DBFacadeTest {
         Building b2 = facade.getBuildings( 160);
         assertEquals( "3100-3100", b2.getContactPhone());
     }
-    
+        /**
+     * Test of insertNewBuilding method, of class DBFacade.
+     */
+    @Test
+    public void testInsertNewBuilding() {
+        System.out.println( "updateBuilding" );
+        // Heisesgade 94, Lars Paulsen, 2640,  Hedehusene, 3184-3141
+        // Change phone number
+        Building b = new Building(-1, "Maarumvej 9", 3400, "Hillerød",
+                "Jens Jensen", "1234-4321");
+        //facade.inserNewBuilding( b );
+        List list = facade.getBuildings();
+        assertEquals( 6, list.size());
+    }
 }

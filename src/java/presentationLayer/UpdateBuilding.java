@@ -8,9 +8,7 @@ package presentationLayer;
 import domain.Building;
 import domain.DomainFacade;
 import java.io.IOException;
-import java.io.PrintWriter;
 import javax.servlet.RequestDispatcher;
-import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -36,6 +34,7 @@ public class UpdateBuilding extends HttpServlet {
     protected void processRequest( HttpServletRequest request, HttpServletResponse response )
             throws ServletException, IOException {
         response.setContentType( "text/html;charset=UTF-8" );
+        request.setCharacterEncoding("UTF-8");
         //try ( PrintWriter out = response.getWriter() ) {
             String action = request.getParameter( "action" );
             if ( "Submit".equals( action ) ) {
@@ -85,7 +84,7 @@ public class UpdateBuilding extends HttpServlet {
     public String getServletInfo() {
         return "Short description";
     }// </editor-fold>
-
+    
     private void forward( HttpServletRequest req, HttpServletResponse res, String path ) throws IOException, ServletException {
         //ServletContext sc = getServletContext();
         RequestDispatcher rd = req.getRequestDispatcher( "/" + path );
