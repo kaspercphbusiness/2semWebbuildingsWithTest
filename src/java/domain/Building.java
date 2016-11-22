@@ -3,9 +3,9 @@ package domain;
 import java.util.List;
 
 /**
- * The purpose of Building is to represent the domain class Building.
- *
- * @author kasper
+ The purpose of Building is to represent the domain class Building.
+ Building is instiated in the database layer and returned to presentation, or vice versa.
+
  */
 public class Building {
 

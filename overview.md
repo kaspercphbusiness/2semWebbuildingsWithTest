@@ -16,7 +16,7 @@ package "Presentation layer"  as presentation {
   class editbuildings<<jsp>>
 
   class RenderUtil 
-  class UpdateBuilding
+  class UpdateBuilding <<Servlet>>
   buildings - editbuildings: links >
   editbuildings - UpdateBuilding: posts >
   UpdateBuilding - RenderUtil: uses >

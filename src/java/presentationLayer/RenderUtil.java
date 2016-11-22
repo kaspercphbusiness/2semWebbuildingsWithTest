@@ -8,11 +8,14 @@ import javax.servlet.jsp.JspWriter;
 /**
  * The purpose of RenderUtil is to provide a number of static methods which will
  * help keep the JSP pages less cluttered
- *
- * @author kasper
  */
 public class RenderUtil {
-
+    /**
+    Renders a list of buildings as html. It is specific to my building class.
+    @param out - the html stream to write to
+    @param buildings - list of buildings to be rendered
+    @throws IOException - should not happen...
+    */
     public static void renderBuildingsTable( JspWriter out, List<Building> buildings )
             throws IOException {
         if ( buildings.isEmpty() ) {
