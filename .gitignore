@@ -8,3 +8,4 @@ nbdist/
 
 ## .jacocoverage
 .jacocoverage/
+/nbproject/

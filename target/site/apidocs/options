@@ -1,0 +1,24 @@
+-classpath
+'/Users/kasper/.m2/repository/mysql/mysql-connector-java/6.0.5/mysql-connector-java-6.0.5.jar:/Users/kasper/.m2/repository/javax/javaee-web-api/7.0/javaee-web-api-7.0.jar'
+-encoding
+'UTF-8'
+-protected
+-sourcepath
+'/Users/kasper/nearlyEmpty/webbuildingforjavadoc/src/main/java'
+-author
+-bottom
+'Copyright &#169; 2017. All rights reserved.'
+-charset
+'UTF-8'
+-d
+'/Users/kasper/nearlyEmpty/webbuildingforjavadoc/target/site/apidocs'
+-docencoding
+'UTF-8'
+-doctitle
+'Webbuilding with JavaDoc 1.0 API'
+-linkoffline
+'http://docs.oracle.com/javase/7/docs/api' '/Users/kasper/nearlyEmpty/webbuildingforjavadoc/target/javadoc-bundle-options'
+-use
+-version
+-windowtitle
+'Webbuilding with JavaDoc 1.0 API'

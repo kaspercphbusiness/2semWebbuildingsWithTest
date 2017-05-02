@@ -1,0 +1,11 @@
+randomdata/Generator.class
+dbaccess/DBFacade.class
+presentationLayer/RenderUtil.class
+domain/Building.class
+randomdata/Person.class
+dbaccess/DBConnection.class
+presentationLayer/UpdateBuilding.class
+randomdata/AddressGenerator.class
+domain/DomainFacade.class
+randomdata/PersonGenerator.class
+randomdata/Address.class
